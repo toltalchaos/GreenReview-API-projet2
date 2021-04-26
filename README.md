@@ -1,8 +1,19 @@
 ***review app create api***
+# deployed at
+**https://doc-review-green.web.app/**
+
+deployment test credentials
+test@test.test
+123456
+
+
 
 ### purpose
 the purpose of this app is to provide a way to use firebase authentication to host a service to easily fill reviews for products and save to the firebase RTDB system. 
-the seperate application (https://greenreview.netlify.app/?productID=CNB-01300628) uses the API to populate its view using GET requests in the URL to dynamically populate the web page based on Json data recieved from the firebase Database
+the seperate application (https://greenreview.netlify.app/?productID=CNB-01300628) uses the API to populate its view using GET requests in the URL to dynamically populate the web page based on Json data received from the firebase Database.
+
+#### note:
+.gitignore file includes firebase credential file and firebase config file. 
 
 
 
