@@ -3,6 +3,8 @@ import React, {useContext} from 'react';
 import styled from 'styled-components';
 import {Redirect, Link, useRouteMatch, Route, Switch} from 'react-router-dom';
 
+import {FormDDLInput} from './../../formshit/FormComponents'
+
 const CreateStyles = styled.div`
   background-color: #d4e09b;
   border-radius: 1rem;
@@ -20,6 +22,8 @@ const CreatePage = (props) => {
         <CreateStyles>
             
         <p> UNDER CONSTRUCTION</p>
+
+        <FormDDLInput></FormDDLInput>
 
         </CreateStyles>
         );

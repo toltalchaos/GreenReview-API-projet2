@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faGrinSquintTears, faFrown, faUndo } from '@fortawesome/free-solid-svg-icons'
 
 const FormInputStyles = styled.div`
   color: grey;
@@ -30,6 +30,19 @@ const FormInputStyles = styled.div`
     color: #283d3b;
   }
 `;
+const FormListStyles = styled.ul`
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2rem;
+  li{
+
+  border: 2px solid #283d3b;
+  padding: 1rem;
+  border-radius: 1rem;
+  }
+
+`
 
 const FormTextInput = (props) => {
   return (
@@ -45,34 +58,53 @@ const FormDDLInput = (props) => {
   const [chosen, setChosen] = useState(0);
   
 
-  function dropdownclick(evnt) {
-    
-  }
   function selectsvg(selected) {
     //try create a stateful component "selected" when false return dropdown, when true, return selected?
-    setChosen = selected;
-    setSelected = true;
+    setChosen(selected);
+    setSelected(true);
+    console.log("selected option")
     
+  }
+  function undoSelect(){
+    setChosen(0);
+    setSelected(false);
   }
 
 
 if(selected == false){
   return (
-    <div className="dropdown">
-      <button className="drpbtn" onClick={dropdownclick}>select</button>
-      <div className="ddl">
-          <button onClick={selectsvg(1)}><FontAwesomeIcon icon={faCoffee} /></button>
-          
-      </div>
-    </div>
+    
+        <FormListStyles>
+          <li onClick={() => {selectsvg(1)}}><FontAwesomeIcon icon={faCoffee} /></li>
+          <li onClick={() => {selectsvg(2)}}><FontAwesomeIcon icon={faGrinSquintTears} /></li>
+          <li onClick={() => {selectsvg(3)}}><FontAwesomeIcon icon={faFrown} /></li>
+        </FormListStyles>  
     
   );
 }
   else{
     switch(chosen){
       case 1: 
-        return (<FontAwesomeIcon icon={faCoffee} />);
+        return (
+        <FormListStyles>
+          <li><FontAwesomeIcon icon={faCoffee} /></li>
+          <li onClick={() => {undoSelect()}}><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>
+        );
       break;
+      case 2:
+        return(<FormListStyles>
+          <li><FontAwesomeIcon icon={faGrinSquintTears} /></li>
+          <li onClick={() => {undoSelect()}}><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>);
+      break;
+      case 3:
+        return(<FormListStyles>
+          <li><FontAwesomeIcon icon={faFrown} /></li>
+          <li onClick={() => {undoSelect()}}><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>);
+      break;
+
 
       default: setSelected = false;
       break;
