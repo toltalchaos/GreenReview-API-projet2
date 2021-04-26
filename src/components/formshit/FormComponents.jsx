@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 const FormInputStyles = styled.div`
   color: grey;
   box-shadow: 0 4px -2px rgba(0, 0, 0, 0.12);
@@ -44,4 +46,11 @@ const FormDDLInput = (props) => {
   );
 };
 
-export { FormTextInput, FormDDLInput };
+const TextAreaInput = (props) => {
+  return (
+    <>
+    </>
+  );
+};
+
+export { FormTextInput, FormDDLInput, TextAreaInput };

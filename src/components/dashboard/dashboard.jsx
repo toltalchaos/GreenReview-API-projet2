@@ -1,7 +1,7 @@
 import AuthContext from "./../../auth/AuthContext";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { Redirect, Link, useRouteMatch, Route, Switch } from "react-router-dom";
+import { Redirect, useRouteMatch} from "react-router-dom";
 import { LinkButton } from "../btn/button";
 
 const DashboardStyle = styled.div`
