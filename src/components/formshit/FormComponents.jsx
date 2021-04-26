@@ -40,6 +40,13 @@ const FormListStyles = styled.ul`
   border: 2px solid #283d3b;
   padding: 1rem;
   border-radius: 1rem;
+  margin: 0.5rem;
+  }
+  .undo{
+    padding:0.3rem;
+    color:tomato;
+    border: 2px solid tomato;
+    margin:auto;
   }
 
 `
@@ -59,7 +66,7 @@ const FormDDLInput = (props) => {
   
 
   function selectsvg(selected) {
-    //try create a stateful component "selected" when false return dropdown, when true, return selected?
+    
     setChosen(selected);
     setSelected(true);
     console.log("selected option")
@@ -88,20 +95,20 @@ if(selected == false){
         return (
         <FormListStyles>
           <li><FontAwesomeIcon icon={faCoffee} /></li>
-          <li onClick={() => {undoSelect()}}><FontAwesomeIcon icon={faUndo} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>
         );
       break;
       case 2:
         return(<FormListStyles>
           <li><FontAwesomeIcon icon={faGrinSquintTears} /></li>
-          <li onClick={() => {undoSelect()}}><FontAwesomeIcon icon={faUndo} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>);
       break;
       case 3:
         return(<FormListStyles>
           <li><FontAwesomeIcon icon={faFrown} /></li>
-          <li onClick={() => {undoSelect()}}><FontAwesomeIcon icon={faUndo} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>);
       break;
 
