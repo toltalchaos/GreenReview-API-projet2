@@ -6,6 +6,8 @@ import HotBar from './components/hotbar/hotbar';
 import LoginFrontpage from './components/login/loginfront'
 import ProductPage from './components/products/ProductPage';
 import styled from "styled-components";
+import CreatePage from './components/dashboard/pages/Create';
+import EditPage from './components/dashboard/pages/Edit';
 
 
 const CONTAINER = styled.div`
@@ -33,6 +35,14 @@ function App() {
 
           <Route path='/productpage'>
             <ProductPage/>
+          </Route>
+
+          <Route path='/create'>
+            <CreatePage/>
+          </Route>
+
+          <Route path='/edit'>
+            <EditPage/>
           </Route>
 
         </Switch>

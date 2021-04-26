@@ -1,6 +1,7 @@
 const ProductPage = (props) => {
     return ( 
         <>
+        <h1>PRODUCTPAGE</h1>
         </>
      );
 }

@@ -38,7 +38,10 @@ const FormTextInput = (props) => {
 };
 
 const FormDDLInput = (props) => {
-  return <></>;
+  return (
+    <>
+    </>
+  );
 };
 
 export { FormTextInput, FormDDLInput };
