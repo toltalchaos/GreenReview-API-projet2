@@ -53,13 +53,15 @@ const HotBar = (props) => {
         history.push('/')
     }
 
+  
+
     return ( 
         <>
         <NAV>
             <LinkButton label="all products" path='/productpage'></LinkButton>
             <LinkButton label="'/dashboard'" path='/dashboard'></LinkButton>
             <div className="logoutdiv">
-                  <Button className="logout" label="logout" onClick={logout}/>
+                  <Button  className="logout" label="logout" onClick={logout}/>
             </div>
           
         </NAV>
