@@ -40,6 +40,7 @@ const CreatePage = (props) => {
 
       //create stateful object from form elements, use IDs to select
       //select each object by ID and add the object to the stateful object "product"
+      //getElementById("someid").... => save into product
 
       
     }
