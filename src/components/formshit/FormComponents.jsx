@@ -5,16 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faGrinSquintTears, faFrown, faUndo } from '@fortawesome/free-solid-svg-icons'
 
 const FormInputStyles = styled.div`
-  color: grey;
+  
   box-shadow: 0 4px -2px rgba(0, 0, 0, 0.12);
   input {
     width: 100%;
 
-    font-size: 1rem;
+    font-size: 1.5rem;
 
     background-color: #dfdfdf;
-
-    border: none;
+    border-radius:0.3rem;
 
     padding: 0.25rem;
 
@@ -25,9 +24,8 @@ const FormInputStyles = styled.div`
     margin: 0.5rem;
   }
   label {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #283d3b;
+    font-size: 1.5rem;
+    color: #a44a3f;
   }
 `;
 const FormListStyles = styled.ul`
@@ -48,6 +46,21 @@ const FormListStyles = styled.ul`
     border: 2px solid tomato;
     margin:auto;
   }
+
+`
+const FormTextAreaStyles = styled.div`
+color: #a44a3f;
+margin: auto;
+display: flex;
+flex-direction: column;
+textarea{
+  width: 100%;
+  height: 8rem;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  
+
+}
 
 `
 
@@ -94,20 +107,20 @@ if(selected == false){
       case 1: 
         return (
         <FormListStyles>
-          <li><FontAwesomeIcon icon={faCoffee} /></li>
+          <li><FontAwesomeIcon icon={faCoffee} id={props.id} name={props.id}/></li>
           <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>
         );
       break;
       case 2:
         return(<FormListStyles>
-          <li><FontAwesomeIcon icon={faGrinSquintTears} /></li>
+          <li><FontAwesomeIcon icon={faGrinSquintTears} id={props.id} name={props.id}/></li>
           <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>);
       break;
       case 3:
         return(<FormListStyles>
-          <li><FontAwesomeIcon icon={faFrown} /></li>
+          <li><FontAwesomeIcon icon={faFrown} id={props.id} name={props.id} /></li>
           <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>);
       break;
@@ -122,8 +135,12 @@ if(selected == false){
 
 const TextAreaInput = (props) => {
   return (
-    <>
-    </>
+    <FormTextAreaStyles>
+       <label htmlFor={props.id}>{props.label}</label>
+      <textarea cols="50" id={props.id} name={props.id}/>
+
+    </FormTextAreaStyles>
+    
   );
 };
 
