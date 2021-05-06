@@ -36,31 +36,32 @@ const CreatePage = (props) => {
     //init empty stateful object
     const [product, setProduct] = useState({
       MT:true,
-      youtubeEmbed:null,
-       effectDesc:null,
-       effectRating: null,
-       imgOne:null,
-       imgTwo:null,
-       priceDesc:null,
-       priceRating:null,
-       productId:null,
-       strengthDesc:null,
-       strengthRating:null,
-       tasteDesc:null,
-       tasteRating:null,
-       title:null,
-       blog:null
+      youtubeEmbed:"",
+       effectDesc:"",
+       effectRating: "",
+       imgOne:"",
+       imgTwo:"",
+       priceDesc:"",
+       priceRating:"",
+       productId:"",
+       strengthDesc:"",
+       strengthRating:"",
+       tasteDesc:"",
+       tasteRating:"",
+       title:"",
+       blog:""
     })
 
     function SubmitButtonClick (e) {
 
       //create stateful object from form elements, use IDs to select
       //select each object by ID and add the object to the stateful object "product"
-      //getElementById("someid").... => save into product
-      setProduct({
+      //getElementById("someid").... => save into product      
+      const newObj =
+        {
        MT: false,
        youtubeEmbed: document.getElementById("youtube-link").value,
-       effectDesc: document.getElementById("effect-desc").value,
+       effectDesc: document.getElementById("effect-desc"),
        effectRating: document.getElementById("effect-rating").outerHTML,
        imgOne: document.getElementById("product-img-one").value,
        imgTwo: document.getElementById("product-img-two").value,
@@ -73,7 +74,9 @@ const CreatePage = (props) => {
        tasteRating: document.getElementById("taste-rating").outerHTML,
        title: document.getElementById("product-title").value,
        blog: document.getElementById("blog").value
-      })
+      }
+      setProduct(newObj);
+      console.log(document.getElementById("effect-desc"));
       console.log(product.effectDesc);
       
     }
