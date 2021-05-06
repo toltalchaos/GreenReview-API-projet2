@@ -34,25 +34,58 @@ const CreatePage = (props) => {
     const auth = useContext(AuthContext);
     const {path, url} = useRouteMatch();
     //init empty stateful object
-    const [procuct, setProduct] = useState(null)
+    const [product, setProduct] = useState({
+      MT:true,
+      youtubeEmbed:null,
+       effectDesc:null,
+       effectRating: null,
+       imgOne:null,
+       imgTwo:null,
+       priceDesc:null,
+       priceRating:null,
+       productId:null,
+       strengthDesc:null,
+       strengthRating:null,
+       tasteDesc:null,
+       tasteRating:null,
+       title:null,
+       blog:null
+    })
 
     function SubmitButtonClick (e) {
 
       //create stateful object from form elements, use IDs to select
       //select each object by ID and add the object to the stateful object "product"
       //getElementById("someid").... => save into product
-
+      setProduct({
+       MT: false,
+       youtubeEmbed: document.getElementById("youtube-link").value,
+       effectDesc: document.getElementById("effect-desc").value,
+       effectRating: document.getElementById("effect-rating").outerHTML,
+       imgOne: document.getElementById("product-img-one").value,
+       imgTwo: document.getElementById("product-img-two").value,
+       priceDesc: document.getElementById("price-desc").value,
+       priceRating: document.getElementById("price-rating").outerHTML,
+       productId: document.getElementById("product-id").value,
+       strengthDesc: document.getElementById("strength-desc").value,
+       strengthRating: document.getElementById("strength-rating").outerHTML,
+       tasteDesc: document.getElementById("taste-desc").value,
+       tasteRating: document.getElementById("taste-rating").outerHTML,
+       title: document.getElementById("product-title").value,
+       blog: document.getElementById("blog").value
+      })
+      console.log(product.effectDesc);
       
     }
 
 
-   if(auth.authenticate && procuct == null){
+   if(auth.authenticate && product.MT == true){
     return ( 
         <CreateStyles>
         
         <div>
         <FormTextInput 
-           id={"product-title"}
+           iid={"product-title"}
            label={"Product Title:"}
            inputType={"Text"}
            name={"product-title"}
@@ -60,35 +93,36 @@ const CreatePage = (props) => {
           <br/>
 
           <FormTextInput 
-           id={"product-id"}
+           iid={"product-id"}
            label={"Product SKU:"}
            inputType={"Text"}
            name={"product-id"}
           />
           <br/>
           <FormTextInput 
-           id={"youtube-link"}
+           iid={"youtube-link"}
            label={"youtube Embedded Link:"}
            inputType={"Text"}
            name={"youtube-link"}
           />
           <br/>
           <FormTextInput 
-           id={"product-img-one"}
+           iid={"product-img-one"}
            label={"Product image URL:"}
            inputType={"Text"}
            name={"product-img-one"}
           />
           <br/>
           <FormTextInput 
-           id={"product-img-two"}
+           iid={"product-img-two"}
            label={"Product image URL(2):"}
            inputType={"Text"}
            name={"product-img-two"}
           />
           <br/>
           <FormTextInput 
-           id={"effect-desc"}
+           iid={"effect-desc"}
+           id={"effect"}
            label={"effect description:"}
            inputType={"Text"}
            name={"effect-desc"}
@@ -99,7 +133,7 @@ const CreatePage = (props) => {
           </div>
           
           <FormTextInput 
-           id={"price-desc"}
+           iid={"price-desc"}
            label={"price description:"}
            inputType={"Text"}
            name={"price-desc"}
@@ -111,7 +145,7 @@ const CreatePage = (props) => {
 
            
           <FormTextInput 
-           id={"strength-desc"}
+           iid={"strength-desc"}
            label={"strength description:"}
            inputType={"Text"}
            name={"strength-desc"}
@@ -123,7 +157,7 @@ const CreatePage = (props) => {
           
           
           <FormTextInput 
-           id={"taste-desc"}
+           iid={"taste-desc"}
            label={"taste description:"}
            inputType={"Text"}
            name={"taste-desc"}
@@ -147,7 +181,7 @@ const CreatePage = (props) => {
         </CreateStyles>
         );
    }
-   else if (auth.authenticate && procuct != null) {
+   else if (auth.authenticate && product.MT == false) {
     return (
       //read the object "product" into elements on the screen 
       <p>new object created</p>

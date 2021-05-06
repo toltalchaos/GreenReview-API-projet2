@@ -67,8 +67,8 @@ textarea{
 const FormTextInput = (props) => {
   return (
     <FormInputStyles {...props}>
-      <label htmlFor={props.id}>{props.label}</label>
-      <input type={props.inputType} id={props.id} name={props.name}></input>
+      <label htmlFor={props.iid}>{props.label}</label>
+      <input type={props.inputType} id={props.iid} name={props.name}></input>
     </FormInputStyles>
   );
 };
@@ -82,7 +82,7 @@ const FormDDLInput = (props) => {
     
     setChosen(selected);
     setSelected(true);
-    console.log("selected option")
+    //console.log("selected option")
     
   }
   function undoSelect(){
