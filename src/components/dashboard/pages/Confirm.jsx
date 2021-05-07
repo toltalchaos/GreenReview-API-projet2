@@ -4,9 +4,7 @@ import SVGComponent from '../../domSvg/DomSvgComp';
 import YouTube from './../../iframe/videoBlock';
 
 const ConfirmView = (product) => {
-    console.log(product);
-    const parser = new DOMParser();
-    const effRating = parser.parseFromString(product.effectRating, "image/svg+xml");
+    
 
     return ( 
   
@@ -24,7 +22,6 @@ const ConfirmView = (product) => {
            </div>
            <div>
            <YouTube link={product.youtubeEmbed}/>
-           
            </div>
            <br/>
            <div>
@@ -41,8 +38,8 @@ const ConfirmView = (product) => {
            </div>
            <div>
              <p>effect rating: </p>
-             <div id="eff-rat"></div>
-             <SVGComponent svg={effRating} eid={"eff-rat"}/>
+             
+             <SVGComponent svg={product.effectRating}/>
            </div>
  
  

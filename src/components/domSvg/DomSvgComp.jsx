@@ -1,10 +1,19 @@
+
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 
 const SVGComponent = (props) => {
-    console.log(props.eid)
-   ReactDOM.render(props.svg, document.getElementById(props.eid))
-     
+    const parser = new DOMParser();
+    const svgElement = parser.parseFromString(props.svg, "image/svg+xml").firstChild;
+
+    console.log(svgElement)
+    
+    return(
+
+       svgElement
+        
+        );
+    
 }
  
 export default SVGComponent;

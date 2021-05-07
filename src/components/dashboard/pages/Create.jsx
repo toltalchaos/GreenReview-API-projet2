@@ -198,7 +198,7 @@ const CreatePage = (props) => {
     return (
       <CreateStyles>
 
-        <ConfirmView product/>
+        <ConfirmView {...product}/>
 
       </CreateStyles>
       
