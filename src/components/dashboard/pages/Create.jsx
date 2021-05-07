@@ -30,6 +30,7 @@ p{
 
 `
 
+
 const CreatePage = (props) => {
     const auth = useContext(AuthContext);
     const {path, url} = useRouteMatch();
@@ -52,6 +53,7 @@ const CreatePage = (props) => {
        blog:""
     })
 
+
     function SubmitButtonClick (e) {
 
       //create stateful object from form elements, use IDs to select
@@ -61,7 +63,7 @@ const CreatePage = (props) => {
         {
        MT: false,
        youtubeEmbed: document.getElementById("youtube-link").value,
-       effectDesc: document.getElementById("effect-desc"),
+       effectDesc: document.getElementById("effect-desc").value,
        effectRating: document.getElementById("effect-rating").outerHTML,
        imgOne: document.getElementById("product-img-one").value,
        imgTwo: document.getElementById("product-img-two").value,
@@ -76,8 +78,6 @@ const CreatePage = (props) => {
        blog: document.getElementById("blog").value
       }
       setProduct(newObj);
-      console.log(document.getElementById("effect-desc"));
-      console.log(product.effectDesc);
       
     }
 
@@ -178,13 +178,14 @@ const CreatePage = (props) => {
         </div>
         <br/>
         <Button label={"Submit"}
-          onClick={SubmitButtonClick}
+          onClick={() => {SubmitButtonClick()}}
         ></Button>
 
         </CreateStyles>
         );
    }
    else if (auth.authenticate && product.MT == false) {
+     console.log(product);
     return (
       //read the object "product" into elements on the screen 
       <p>new object created</p>
