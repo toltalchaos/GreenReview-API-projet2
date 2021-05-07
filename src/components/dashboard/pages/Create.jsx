@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import {Redirect, Link, useRouteMatch, Route, Switch} from 'react-router-dom';
 
 import {FormDDLInput, FormTextInput, TextAreaInput} from './../../formshit/FormComponents';
-import {Button} from './../../btn/button'
+import {Button} from './../../btn/button';
+import YouTube from './../../iframe/videoBlock';
 
 const CreateStyles = styled.div`
   background-color: #d4e09b;
@@ -25,6 +26,10 @@ p{
   div>div{
     display:flex;
     align-items:center;
+    justify-content:space-between;
+    p{
+      padding-left:2rem;
+    }
   }
 
 
@@ -186,14 +191,57 @@ const CreatePage = (props) => {
    }
    else if (auth.authenticate && product.MT == false) {
      console.log(product);
+     const parser = new DOMParser();
+     const effRating = parser.parseFromString(product.effectRating, "image/svg+xml");
     return (
-      //read the object "product" into elements on the screen 
-      <p>new object created</p>
-      //add buttons to confirm or deny 
-        //confirm -> sends to RTDB
-        //deny -> nukes the object
-    );
-   } 
+      <CreateStyles>
+
+        {/* //read the object "product" into elements on the screen  */}
+        <p>new object created</p>
+  
+        <div>
+          <div>
+            <p>Title: </p>
+            <p> {product.title} </p>
+          </div>
+          <div>
+            <p>product SKU: </p>
+            <p> {product.productId} </p>
+          </div>
+          <div>
+            <p>youtube </p>
+          </div>
+          <div>
+          <YouTube link={product.youtubeEmbed}/>
+          
+          </div>
+          <br/>
+          <div>
+            <p>image 1</p>
+            <img src={product.imgOne} alt= "first image"></img>
+          </div>
+          <div>
+            <p>image 2</p>
+            <img src={product.imgTwo} alt= "second image"></img>
+          </div>
+          <div>
+            <p>effect description: </p>
+            <p> {product.effectDesc} </p>
+          </div>
+          <div>
+            <p>effect rating: </p>
+             {effRating}
+          </div>
+
+
+
+        </div>
+        {/* //add buttons to confirm or deny 
+          //confirm -> sends to RTDB
+          //deny -> nukes the object */}
+
+      </CreateStyles>
+    )} 
 
    else{
     return (<Redirect to="/"/>);
