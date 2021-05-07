@@ -2,9 +2,15 @@ import React from 'react';
 
 import SVGComponent from '../../domSvg/DomSvgComp';
 import YouTube from './../../iframe/videoBlock';
+import {Button} from './../../btn/button';
 
 const ConfirmView = (product) => {
-    
+    function handleConfirm(){
+      console.log("CONFIRMED")
+      
+
+
+    }
 
     return ( 
   
@@ -76,7 +82,9 @@ const ConfirmView = (product) => {
              <p>Blog: </p>
              <p> {product.blog} </p>
            </div>
- 
+          <br/>
+          
+          <Button label={"CONFIRM"} onClick={handleConfirm}/>
  
  
          </div>
