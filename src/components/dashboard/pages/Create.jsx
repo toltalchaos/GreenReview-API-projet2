@@ -30,9 +30,13 @@ p{
   div>div{
     display:flex;
     align-items:center;
-    justify-content:space-between;
+    justify-content:space-evenly;
+
     p{
-      padding-left:2rem;
+      padding-left:1rem;
+    }
+    svg{
+      font-size: 3rem;
     }
   }
 
