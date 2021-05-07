@@ -1,15 +1,18 @@
-import AuthContext from './../../../auth/AuthContext';
-import React, {useContext, useState} from 'react';
-import styled from 'styled-components';
-import {Redirect, Link, useRouteMatch, Route, Switch} from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import AuthContext from "./../../../auth/AuthContext";
+import React, { useContext, useState } from "react";
+import styled from "styled-components";
+import { Redirect, Link, useRouteMatch, Route, Switch } from "react-router-dom";
+import ReactDOM from "react-dom";
 
+import {
+  FormDDLInput,
+  FormTextInput,
+  TextAreaInput,
+} from "./../../formshit/FormComponents";
+import { Button } from "./../../btn/button";
 
-import {FormDDLInput, FormTextInput, TextAreaInput} from './../../formshit/FormComponents';
-import {Button} from './../../btn/button';
-
-import ConfirmView from './Confirm';
-
+import ConfirmView from "./Confirm";
+import ErrorMsg from "../../errorMSG/ErrorMsg";
 
 const CreateStyles = styled.div`
   background-color: #d4e09b;
@@ -17,200 +20,247 @@ const CreateStyles = styled.div`
   margin: 1rem;
   padding: 1rem 0;
   display: flex;
-  flex-direction:column;
-  justify-content:space-evenly;
-  align-items:center;
-  font-size:1.5rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.5rem;
   font-weight: bold;
-p{
+  p {
+    color: #a44a3f;
+  }
 
-  color: #a44a3f;
-}
+  div > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
-  div>div{
-    display:flex;
-    align-items:center;
-    justify-content:space-evenly;
-
-    p{
-      padding-left:1rem;
+    p {
+      padding-left: 1rem;
     }
-    svg{
+    svg {
       font-size: 3rem;
     }
   }
-
-
-`
-
+`;
 
 const CreatePage = (props) => {
-    const auth = useContext(AuthContext);
-    const {path, url} = useRouteMatch();
-    //init empty stateful object
-    const [product, setProduct] = useState({
-      MT:true,
-      youtubeEmbed:"",
-       effectDesc:"",
-       effectRating: "",
-       imgOne:"",
-       imgTwo:"",
-       priceDesc:"",
-       priceRating:"",
-       productId:"",
-       strengthDesc:"",
-       strengthRating:"",
-       tasteDesc:"",
-       tasteRating:"",
-       title:"",
-       blog:""
-    })
-
-
-    function SubmitButtonClick (e) {
-
-      //create stateful object from form elements, use IDs to select
-      //select each object by ID and add the object to the stateful object "product"
-      //getElementById("someid").... => save into product      
-      const newObj =
-        {
-       MT: false,
-       youtubeEmbed: document.getElementById("youtube-link").value,
-       effectDesc: document.getElementById("effect-desc").value,
-       effectRating: document.getElementById("effect-rating").outerHTML,
-       imgOne: document.getElementById("product-img-one").value,
-       imgTwo: document.getElementById("product-img-two").value,
-       priceDesc: document.getElementById("price-desc").value,
-       priceRating: document.getElementById("price-rating").outerHTML,
-       productId: document.getElementById("product-id").value,
-       strengthDesc: document.getElementById("strength-desc").value,
-       strengthRating: document.getElementById("strength-rating").outerHTML,
-       tasteDesc: document.getElementById("taste-desc").value,
-       tasteRating: document.getElementById("taste-rating").outerHTML,
-       title: document.getElementById("product-title").value,
-       blog: document.getElementById("blog").value
-      }
-      setProduct(newObj);
-      
+  const auth = useContext(AuthContext);
+  const { path, url } = useRouteMatch();
+  //init empty stateful object
+  const [product, setProduct] = useState({
+    MT: true,
+    err: false,
+    youtubeEmbed: "",
+    effectDesc: "",
+    effectRating: "",
+    imgOne: "",
+    imgTwo: "",
+    priceDesc: "",
+    priceRating: "",
+    productId: "",
+    strengthDesc: "",
+    strengthRating: "",
+    tasteDesc: "",
+    tasteRating: "",
+    title: "",
+    blog: ""
+  });
+  function ErrorFlag(){
+    const errobj = {
+      MT: true,
+      err: true,
+      youtubeEmbed: "",
+      effectDesc: "",
+      effectRating: "",
+      imgOne: "",
+      imgTwo: "",
+      priceDesc: "",
+      priceRating: "",
+      productId: "",
+      strengthDesc: "",
+      strengthRating: "",
+      tasteDesc: "",
+      tasteRating: "",
+      title: "",
+      blog: ""
     }
+    setProduct(errobj);
+  }
 
+  function SubmitButtonClick(e) {
+    //error handle all fields filled
+    //svgs
+    if (
+      document.getElementById("effect-rating") != null ||
+      document.getElementById("price-rating") != null ||
+      document.getElementById("strength-rating") != null ||
+      document.getElementById("taste-rating") != null
+    ) {
+      //svgs good
+      const newObj = {
+        MT: false,
+        err: false,
+        youtubeEmbed: document.getElementById("youtube-link").value,
+        effectDesc: document.getElementById("effect-desc").value,
+        effectRating: document.getElementById("effect-rating").outerHTML,
+        imgOne: document.getElementById("product-img-one").value,
+        imgTwo: document.getElementById("product-img-two").value,
+        priceDesc: document.getElementById("price-desc").value,
+        priceRating: document.getElementById("price-rating").outerHTML,
+        productId: document.getElementById("product-id").value,
+        strengthDesc: document.getElementById("strength-desc").value,
+        strengthRating: document.getElementById("strength-rating").outerHTML,
+        tasteDesc: document.getElementById("taste-desc").value,
+        tasteRating: document.getElementById("taste-rating").outerHTML,
+        title: document.getElementById("product-title").value,
+        blog: document.getElementById("blog").value,
+      };
+      //inputs
+      if(newObj.youtubeEmbed == "" ||
+          newObj.effectDesc == "" ||
+          newObj.imgOne == "" ||
+          newObj.imgTwo == "" ||
+          newObj.priceDesc == "" ||
+          newObj.productId == "" ||
+          newObj.strengthDesc == "" ||
+          newObj.tasteDesc == "" || 
+          newObj.title == "" ||
+          newObj.blog == ""){
+            ErrorFlag();
+          }
+        else{
+          setProduct(newObj);
+        }
 
-   if(auth.authenticate && product.MT == true){
-    return ( 
-        <CreateStyles>
-        
+    
+      
+      
+    } else {
+      //svgs bad
+      ErrorFlag()
+    }
+  }
+
+  //MT form
+  if (auth.authenticate && product.MT == true && product.err == false) {
+    return (
+      <CreateStyles>
         <div>
-        <FormTextInput 
-           iid={"product-title"}
-           label={"Product Title:"}
-           inputType={"Text"}
-           name={"product-title"}
+          <FormTextInput
+            iid={"product-title"}
+            label={"Product Title:"}
+            inputType={"Text"}
+            name={"product-title"}
           />
-          <br/>
+          <br />
 
-          <FormTextInput 
-           iid={"product-id"}
-           label={"Product SKU:"}
-           inputType={"Text"}
-           name={"product-id"}
+          <FormTextInput
+            iid={"product-id"}
+            label={"Product SKU:"}
+            inputType={"Text"}
+            name={"product-id"}
           />
-          <br/>
-          <FormTextInput 
-           iid={"youtube-link"}
-           label={"youtube Embedded Link:"}
-           inputType={"Text"}
-           name={"youtube-link"}
+          <br />
+          <FormTextInput
+            iid={"youtube-link"}
+            label={"youtube Embedded Link:"}
+            inputType={"Text"}
+            name={"youtube-link"}
           />
-          <br/>
-          <FormTextInput 
-           iid={"product-img-one"}
-           label={"Product image URL:"}
-           inputType={"Text"}
-           name={"product-img-one"}
+          <br />
+          <FormTextInput
+            iid={"product-img-one"}
+            label={"Product image URL:"}
+            inputType={"Text"}
+            name={"product-img-one"}
           />
-          <br/>
-          <FormTextInput 
-           iid={"product-img-two"}
-           label={"Product image URL(2):"}
-           inputType={"Text"}
-           name={"product-img-two"}
+          <br />
+          <FormTextInput
+            iid={"product-img-two"}
+            label={"Product image URL(2):"}
+            inputType={"Text"}
+            name={"product-img-two"}
           />
-          <br/>
-          <FormTextInput 
-           iid={"effect-desc"}
-           id={"effect"}
-           label={"effect description:"}
-           inputType={"Text"}
-           name={"effect-desc"}
+          <br />
+          <FormTextInput
+            iid={"effect-desc"}
+            id={"effect"}
+            label={"effect description:"}
+            inputType={"Text"}
+            name={"effect-desc"}
           />
           <div>
             <p>effect rating:</p>
-            <FormDDLInput id={"effect-rating"}/>
+            <FormDDLInput id={"effect-rating"} />
           </div>
-          
-          <FormTextInput 
-           iid={"price-desc"}
-           label={"price description:"}
-           inputType={"Text"}
-           name={"price-desc"}
+
+          <FormTextInput
+            iid={"price-desc"}
+            label={"price description:"}
+            inputType={"Text"}
+            name={"price-desc"}
           />
           <div>
             <p>price rating:</p>
-            <FormDDLInput id={"price-rating"}/>
+            <FormDDLInput id={"price-rating"} />
           </div>
 
-           
-          <FormTextInput 
-           iid={"strength-desc"}
-           label={"strength description:"}
-           inputType={"Text"}
-           name={"strength-desc"}
+          <FormTextInput
+            iid={"strength-desc"}
+            label={"strength description:"}
+            inputType={"Text"}
+            name={"strength-desc"}
           />
           <div>
             <p>strength rating:</p>
-            <FormDDLInput id={"strength-rating"}/>
+            <FormDDLInput id={"strength-rating"} />
           </div>
-          
-          
-          <FormTextInput 
-           iid={"taste-desc"}
-           label={"taste description:"}
-           inputType={"Text"}
-           name={"taste-desc"}
+
+          <FormTextInput
+            iid={"taste-desc"}
+            label={"taste description:"}
+            inputType={"Text"}
+            name={"taste-desc"}
           />
           <div>
             <p>taste rating:</p>
-            <FormDDLInput id={"taste-rating"}/>
+            <FormDDLInput id={"taste-rating"} />
           </div>
 
           <div>
-            
-            <TextAreaInput id={"blog"} label={"Blog:"}/>
+            <TextAreaInput id={"blog"} label={"Blog:"} />
           </div>
-        
         </div>
-        <br/>
-        <Button label={"Submit"}
-          onClick={() => {SubmitButtonClick()}}
+        <br />
+        <Button
+          label={"Submit"}
+          onClick={() => {
+            SubmitButtonClick();
+          }}
         ></Button>
-
-        </CreateStyles>
-        );
-   }
-   else if (auth.authenticate && product.MT == false) {
-     
+      </CreateStyles>
+    );
+  } 
+  //good form
+  else if (auth.authenticate && product.MT == false) {
     return (
       <CreateStyles>
-
-        <ConfirmView {...product}/>
-
+        <ConfirmView {...product} />
       </CreateStyles>
-      
-    );} 
-
-   else{
-    return (<Redirect to="/"/>);
+    );
+  } 
+  //ERROR FLAG
+   else if (auth.authenticate && product.err == true) {
+    console.log("ERROR FLAG")
+    return (
+    <CreateStyles>
+      <ErrorMsg msg={"please reload and fill and select ALL fields"} />
+    </CreateStyles>);
+  }  
+  //no auth
+  else { 
+     return <Redirect to="/" />;
    }
-}
- 
+};
+
 export default CreatePage;

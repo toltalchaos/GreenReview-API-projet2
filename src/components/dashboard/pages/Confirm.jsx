@@ -41,6 +41,41 @@ const ConfirmView = (product) => {
              
              <SVGComponent svg={product.effectRating}/>
            </div>
+
+           <div>
+             <p>Price description: </p>
+             <p> {product.priceDesc} </p>
+           </div>
+           <div>
+             <p>Price rating: </p>
+             
+             <SVGComponent svg={product.priceRating}/>
+           </div>
+
+           <div>
+             <p>Strength description: </p>
+             <p> {product.strengthDesc} </p>
+           </div>
+           <div>
+             <p>Strength rating: </p>
+             
+             <SVGComponent svg={product.strengthRating}/>
+           </div>
+
+           <div>
+             <p> Taste description: </p>
+             <p> {product.tasteDesc} </p>
+           </div>
+           <div>
+             <p>Taste rating: </p>
+             
+             <SVGComponent svg={product.tasteRating}/>
+           </div>
+
+           <div>
+             <p>Blog: </p>
+             <p> {product.blog} </p>
+           </div>
  
  
  
