@@ -46,6 +46,10 @@ const CreateStyles = styled.div`
 const CreatePage = (props) => {
   const auth = useContext(AuthContext);
   const { path, url } = useRouteMatch();
+  //svg checker
+  const [svgCheck, setSvgCheck] = useState({
+    effsvg: false
+  })
   //init empty stateful object
   const [product, setProduct] = useState({
     MT: true,
@@ -86,7 +90,15 @@ const CreatePage = (props) => {
     }
     setProduct(errobj);
   }
-
+  // function SelectSvg(svgnum){
+  //   switch(svgnum){
+  //     case 1: let svgedit = svgCheck
+  //             svgedit.effsvg = true
+  //             setSvgCheck(svgedit)
+  //     break;
+  //   }
+    console.log(svgCheck.effsvg)
+  }
   function SubmitButtonClick(e) {
     //error handle all fields filled
     //svgs
@@ -191,7 +203,10 @@ const CreatePage = (props) => {
           />
           <div>
             <p>effect rating:</p>
-            <FormDDLInput id={"effect-rating"} />
+            {/* <FormDDLInput id={"effect-rating"} onClick={() => {
+            SelectSvg(1);
+          }}/> */}
+           <FormDDLInput id={"effect-rating"}/> 
           </div>
 
           <FormTextInput
@@ -261,6 +276,6 @@ const CreatePage = (props) => {
   else { 
      return <Redirect to="/" />;
    }
-};
+;
 
 export default CreatePage;
