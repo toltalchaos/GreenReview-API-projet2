@@ -3,6 +3,15 @@ import React from 'react';
 import SVGComponent from '../../domSvg/DomSvgComp';
 import YouTube from './../../iframe/videoBlock';
 import {Button} from './../../btn/button';
+import styled from "styled-components";
+import {Redirect} from "react-router-dom";
+
+const ButtonStyle = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+
+`
 
 const ConfirmView = (product) => {
     function handleConfirm(){
@@ -10,6 +19,10 @@ const ConfirmView = (product) => {
       
 
 
+    }
+    function handleAbort(){
+      console.log("ABORTED")
+      window.location.reload();
     }
 
     return ( 
@@ -83,8 +96,12 @@ const ConfirmView = (product) => {
              <p> {product.blog} </p>
            </div>
           <br/>
-          
+          <ButtonStyle>
+
           <Button label={"CONFIRM"} onClick={handleConfirm}/>
+          <Button label={"ABORT"} onClick={handleAbort}/>
+
+          </ButtonStyle>
  
  
          </div>
