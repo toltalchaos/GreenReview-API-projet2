@@ -94,7 +94,7 @@ const FormDDLInput = (props) => {
 if(selected == false){
   return (
     
-        <FormListStyles>
+        <FormListStyles {...props}>
           <li onClick={() => {selectsvg(1)}}><FontAwesomeIcon icon={faCoffee} /></li>
           <li onClick={() => {selectsvg(2)}}><FontAwesomeIcon icon={faGrinSquintTears} /></li>
           <li onClick={() => {selectsvg(3)}}><FontAwesomeIcon icon={faFrown} /></li>

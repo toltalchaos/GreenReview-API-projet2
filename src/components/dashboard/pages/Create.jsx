@@ -48,7 +48,10 @@ const CreatePage = (props) => {
   const { path, url } = useRouteMatch();
   //svg checker
   const [svgCheck, setSvgCheck] = useState({
-    effsvg: false
+    effsvg: false,
+    prisvg: false,
+    strsvg: false,
+    tassvg: false
   })
   //init empty stateful object
   const [product, setProduct] = useState({
@@ -90,15 +93,32 @@ const CreatePage = (props) => {
     }
     setProduct(errobj);
   }
-  // function SelectSvg(svgnum){
-  //   switch(svgnum){
-  //     case 1: let svgedit = svgCheck
-  //             svgedit.effsvg = true
-  //             setSvgCheck(svgedit)
-  //     break;
-  //   }
-    console.log(svgCheck.effsvg)
+
+  //function to update that a svg has been selected
+  function SelectSvg(svgnum){
+    //console.log("selected SVG Number" + svgnum)
+    let svgedit = svgCheck;
+    //console.log(svgedit)
+    switch (svgnum) {
+      case 1:
+        svgedit.effsvg = true;
+        setSvgCheck(svgedit);
+        break;
+      case 2:
+        svgedit.prisvg = true;
+        setSvgCheck(svgedit);
+        break;
+      case 3:
+        svgedit.strsvg = true;
+        setSvgCheck(svgedit);
+        break;
+      case 4:
+        svgedit.tassvg = true;
+        setSvgCheck(svgedit);
+        break;
+    }
   }
+  
   function SubmitButtonClick(e) {
     //error handle all fields filled
     //svgs
@@ -140,6 +160,12 @@ const CreatePage = (props) => {
           newObj.blog == ""){
             ErrorFlag();
           }
+        else if(svgCheck.effsvg == false ||
+          svgCheck.prisvg == false ||
+          svgCheck.strsvg == false ||
+          svgCheck.tassvg == false){
+            ErrorFlag();
+        }
         else{
           setProduct(newObj);
         }
@@ -203,10 +229,9 @@ const CreatePage = (props) => {
           />
           <div>
             <p>effect rating:</p>
-            {/* <FormDDLInput id={"effect-rating"} onClick={() => {
+             <FormDDLInput id={"effect-rating"} onClick={() => {
             SelectSvg(1);
-          }}/> */}
-           <FormDDLInput id={"effect-rating"}/> 
+          }}/> 
           </div>
 
           <FormTextInput
@@ -217,7 +242,9 @@ const CreatePage = (props) => {
           />
           <div>
             <p>price rating:</p>
-            <FormDDLInput id={"price-rating"} />
+            <FormDDLInput id={"price-rating"} onClick={() => {
+            SelectSvg(2);
+          }}/>
           </div>
 
           <FormTextInput
@@ -228,7 +255,9 @@ const CreatePage = (props) => {
           />
           <div>
             <p>strength rating:</p>
-            <FormDDLInput id={"strength-rating"} />
+            <FormDDLInput id={"strength-rating"} onClick={() => {
+            SelectSvg(3);
+          }}/>
           </div>
 
           <FormTextInput
@@ -239,7 +268,9 @@ const CreatePage = (props) => {
           />
           <div>
             <p>taste rating:</p>
-            <FormDDLInput id={"taste-rating"} />
+            <FormDDLInput id={"taste-rating"} onClick={() => {
+            SelectSvg(4);
+          }}/>
           </div>
 
           <div>
@@ -276,6 +307,6 @@ const CreatePage = (props) => {
   else { 
      return <Redirect to="/" />;
    }
-;
+  };
 
 export default CreatePage;

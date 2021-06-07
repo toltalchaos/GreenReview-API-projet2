@@ -1,11 +1,11 @@
 ***review app create api***
 **to do**
-- create error logic for unselected SVGs
-- create a cancel button to go back to form page
-- create confirm logic (INTERFACES RTDB)
-- create new credentials for non test user
-- delete auto credentials (require login)
-- create test user logic to not interface RTDB (message to user on error code return)
+- [x] create error logic for unselected SVGs (could use better error code)
+- [] create a cancel button to go back to form page
+- [] create confirm logic (INTERFACES RTDB)
+- []  create new credentials for non test user
+- [] delete auto credentials (require login)
+- []  create test user logic to not interface RTDB (message to user on error code return)
 
 # deployed at
 **https://doc-review-green.web.app/**
