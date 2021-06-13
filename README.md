@@ -3,7 +3,9 @@
 - [x] create error logic for unselected SVGs (could use better error code)
 - [x] create a cancel button to go back to form page
 - [x] create confirmed notice page (this page/module to hold object + interface)
-- [] create confirm logic (INTERFACES RTDB)
+- [x] create confirm logic (INTERFACES RTDB)
+- [] create all product view page
+- [] create edit product on product view (pass edited product to '/confirm')
 - []  create new credentials for non test user
 - [] delete auto credentials (require login)
 - []  create test user logic to not interface RTDB (message to user on error code return)
