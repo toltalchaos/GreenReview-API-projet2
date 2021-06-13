@@ -8,6 +8,7 @@ import ProductPage from './components/products/ProductPage';
 import styled from "styled-components";
 import CreatePage from './components/dashboard/pages/Create';
 import EditPage from './components/dashboard/pages/Edit';
+import SavedPage from './components/dashboard/pages/Saved';
 
 
 const CONTAINER = styled.div`
@@ -31,6 +32,10 @@ function App() {
 
           <Route path='/dashboard'>
             <Dashboard/>
+          </Route>
+
+          <Route path='/saved'>
+            <SavedPage/>
           </Route>
 
           <Route path='/productpage'>

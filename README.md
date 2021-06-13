@@ -2,7 +2,7 @@
 **to do**
 - [x] create error logic for unselected SVGs (could use better error code)
 - [x] create a cancel button to go back to form page
-- [] create confirmed notice page (this page/module to hold object + interface)
+- [x] create confirmed notice page (this page/module to hold object + interface)
 - [] create confirm logic (INTERFACES RTDB)
 - []  create new credentials for non test user
 - [] delete auto credentials (require login)

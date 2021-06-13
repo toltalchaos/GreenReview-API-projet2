@@ -2,23 +2,31 @@ import React from 'react';
 
 import SVGComponent from '../../domSvg/DomSvgComp';
 import YouTube from './../../iframe/videoBlock';
-import {Button} from './../../btn/button';
+import {Button, LinkButton} from './../../btn/button';
 import styled from "styled-components";
 import {Redirect} from "react-router-dom";
+
+import firebaseApp from './../../../firebase/firebaseConfig';
 
 const ButtonStyle = styled.div`
 display: flex;
 align-items: center;
 justify-content: center;
 
+
 `
 
 const ConfirmView = (product) => {
     function handleConfirm(){
       console.log("CONFIRMED")
+      //logic to send to RTDB then redirect to /Saved
       
-
-
+      var database = firebaseApp.database();
+      //set product where ID matches 
+      database.ref('products/' + product.productId).set({
+        ...product
+      })
+      
     }
     function handleAbort(){
       console.log("ABORTED")
@@ -98,7 +106,7 @@ const ConfirmView = (product) => {
           <br/>
           <ButtonStyle>
 
-          <Button label={"CONFIRM"} onClick={handleConfirm}/>
+          <LinkButton path={'/saved'} label={"CONFIRM"} onClick={handleConfirm}/>
           <Button label={"ABORT"} onClick={handleAbort}/>
 
           </ButtonStyle>
