@@ -12,33 +12,17 @@ const ProductPage = (props) => {
     const auth = useContext(AuthContext);
     var database = firebaseApp.database();
 
-    function CreateProductElement(product){
-        //create a react element based on the product being passed
-    }
 
     if(auth.authenticate){
+        console.log("authenticated")
         database.ref().child('products').get().then((snapshot) => {
             let products = snapshot.val();
-            let productElements = products.map(product => {
-                // let productElement = CreateProductElement(product);
-                let productElement = <ProductCard/>
-                 console.log(productElement);
-                return productElement;
-              });
+            console.log(products)
+           //products object returned
             
-            //populate elements
-            
-
-            console.log(productElements);
-            //print to dom
-            return ( 
-                <>
-                <h1>auth PRODUCTPAGE</h1>
-                {/* {productElements} */}
-                </>
-             );
 
         })
+        
     }
     //if !auth - load page without edit fields
     else{
