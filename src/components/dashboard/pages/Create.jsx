@@ -48,6 +48,7 @@ const CreatePage = (props) => {
   const { path, url } = useRouteMatch();
   //svg checker
   const [svgCheck, setSvgCheck] = useState({
+    gensvg: false,
     effsvg: false,
     prisvg: false,
     strsvg: false,
@@ -100,6 +101,10 @@ const CreatePage = (props) => {
     let svgedit = svgCheck;
     //console.log(svgedit)
     switch (svgnum) {
+      case 0:
+        svgedit.gensvg = true;
+        setSvgCheck(svgedit);
+        break;
       case 1:
         svgedit.effsvg = true;
         setSvgCheck(svgedit);
@@ -124,6 +129,7 @@ const CreatePage = (props) => {
     //svgs
     if (
       document.getElementById("effect-rating") != null ||
+      document.getElementById("general-rating") != null ||
       document.getElementById("price-rating") != null ||
       document.getElementById("strength-rating") != null ||
       document.getElementById("taste-rating") != null
@@ -133,6 +139,7 @@ const CreatePage = (props) => {
         MT: false,
         err: false,
         youtubeEmbed: document.getElementById("youtube-link").value,
+        genrating: document.getElementById("general-rating").outerHTML,
         effectDesc: document.getElementById("effect-desc").value,
         effectRating: document.getElementById("effect-rating").outerHTML,
         imgOne: document.getElementById("product-img-one").value,
@@ -227,6 +234,12 @@ const CreatePage = (props) => {
             inputType={"Text"}
             name={"effect-desc"}
           />
+           <div>
+            <p>general rating:</p>
+             <FormDDLInput id={"general-rating"} onClick={() => {
+            SelectSvg(0);
+          }}/> 
+          </div>
           <div>
             <p>effect rating:</p>
              <FormDDLInput id={"effect-rating"} onClick={() => {
