@@ -11,7 +11,7 @@ const AuthProvider = (props) => {
 
     return ( 
 
-        <AuthContext.Provider value={{uid:null, authenticate:true}}>
+        <AuthContext.Provider value={{uid:null, authenticate:false}}>
            {props.children}
         </AuthContext.Provider>
 

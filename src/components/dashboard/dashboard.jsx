@@ -33,8 +33,7 @@ const Dashboard = (props) => {
   if (auth.authenticate) {
     return (
       <DashboardStyle>
-        <LinkButton path="/create" label="Create New" />
-        <LinkButton path="/edit" label="Edit Existing" />
+        <LinkButton path="/create" label="Create/Edit" />
       </DashboardStyle>
     );
   } else {

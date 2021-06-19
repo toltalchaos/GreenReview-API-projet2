@@ -58,8 +58,8 @@ const HotBar = (props) => {
     return ( 
         <>
         <NAV>
-            <LinkButton label="all products" path='/productpage'></LinkButton>
-            <LinkButton label="'/dashboard'" path='/dashboard'></LinkButton>
+            <LinkButton label="product page" path='/productpage'></LinkButton>
+            <LinkButton label="dashboard" path='/dashboard'></LinkButton>
             <div className="logoutdiv">
                   <Button  className="logout" label="logout" onClick={logout}/>
             </div>

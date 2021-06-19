@@ -5,19 +5,23 @@
 - [x] create confirmed notice page (this page/module to hold object + interface)
 - [x] create confirm logic (INTERFACES RTDB)
 - [x] create all product view page (_abandoned new product page for rerouting to app_)
-- []  create new credentials for non test user
-- [] delete auto credentials (require login)
-- []  create test user logic to not interface RTDB (message to user on error code return)
+- [x]  create new credentials for non test user
+- [x] delete auto credentials (require login)
+- [x]  create test user logic to not interface RTDB (message to user on error code return)
 
-- [] edit review page to use new API
+- [x] edit review page to use new API
 
 
 # deployed at
 **https://doc-review-green.web.app/**
 
-deployment test credentials
+deployment test credentials - will not interface RTDB properly -
 test@test.test
 123456
+
+# API available at 
+**https://doc-review-green-default-rtdb.firebaseio.com/products.json**
+see firebase RTDB for documentation 
 
 
 
