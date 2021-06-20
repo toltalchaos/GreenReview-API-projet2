@@ -11,6 +11,8 @@
 
 - [x] edit review page to use new API
 
+- [] manage icons 
+
 
 # deployed at
 **https://doc-review-green.web.app/**
