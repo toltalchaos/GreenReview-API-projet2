@@ -1,0 +1,7 @@
+<i class="far fa-grin-stars"></i>
+<i class="far fa-grin-squint"></i>
+<i class="far fa-smile"></i>
+<i class="far fa-meh"></i>
+<i class="far fa-frown"></i>
+<i class="far fa-sad-tear"></i>
+<i class="far fa-angry"></i>

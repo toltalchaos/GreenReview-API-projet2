@@ -9,6 +9,7 @@ const NAV = styled.nav `
 padding: 1rem;
 background-color: #d4e09b;
 display:flex;
+flex-wrap: wrap;
 align-items: middle;
 justify-content: center;
 border-radius: 0 0 1rem 1rem;

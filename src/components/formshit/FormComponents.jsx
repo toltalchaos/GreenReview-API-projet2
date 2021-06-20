@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faGrinSquintTears, faFrown, faUndo } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faUndo, faAngry, faSadTear, faFrown, faGrinSquintTears, faGrinStars, faGrinSquint, faSmile, faMeh} from '@fortawesome/free-solid-svg-icons'
 
 const FormInputStyles = styled.div`
   
@@ -31,6 +31,7 @@ const FormInputStyles = styled.div`
 const FormListStyles = styled.ul`
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   font-size: 2rem;
   li{
@@ -95,9 +96,13 @@ if(selected == false){
   return (
     
         <FormListStyles {...props}>
-          <li onClick={() => {selectsvg(1)}}><FontAwesomeIcon icon={faCoffee} /></li>
-          <li onClick={() => {selectsvg(2)}}><FontAwesomeIcon icon={faGrinSquintTears} /></li>
-          <li onClick={() => {selectsvg(3)}}><FontAwesomeIcon icon={faFrown} /></li>
+          <li onClick={() => {selectsvg(1)}}><FontAwesomeIcon icon={faGrinStars} /></li>
+          <li onClick={() => {selectsvg(2)}}><FontAwesomeIcon icon={faGrinSquint} /></li>
+          <li onClick={() => {selectsvg(3)}}><FontAwesomeIcon icon={faSmile} /></li>
+          <li onClick={() => {selectsvg(4)}}><FontAwesomeIcon icon={faMeh} /></li>
+          <li onClick={() => {selectsvg(5)}}><FontAwesomeIcon icon={faFrown} /></li>
+          <li onClick={() => {selectsvg(6)}}><FontAwesomeIcon icon={faSadTear} /></li>
+          <li onClick={() => {selectsvg(7)}}><FontAwesomeIcon icon={faAngry} /></li>
         </FormListStyles>  
     
   );
@@ -107,20 +112,44 @@ if(selected == false){
       case 1: 
         return (
         <FormListStyles>
-          <li><FontAwesomeIcon icon={faCoffee} id={props.id} name={props.id}/></li>
+          <li><FontAwesomeIcon icon={faGrinStars} id={props.id} name={props.id}/></li>
           <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>
         );
       break;
       case 2:
         return(<FormListStyles>
-          <li><FontAwesomeIcon icon={faGrinSquintTears} id={props.id} name={props.id}/></li>
+          <li><FontAwesomeIcon icon={faGrinSquint} id={props.id} name={props.id}/></li>
           <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>);
       break;
       case 3:
         return(<FormListStyles>
+          <li><FontAwesomeIcon icon={faSmile} id={props.id} name={props.id} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>);
+      break;
+      case 4:
+        return(<FormListStyles>
+          <li><FontAwesomeIcon icon={faMeh} id={props.id} name={props.id} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>);
+      break;
+      case 5:
+        return(<FormListStyles>
           <li><FontAwesomeIcon icon={faFrown} id={props.id} name={props.id} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>);
+      break;
+      case 6:
+        return(<FormListStyles>
+          <li><FontAwesomeIcon icon={faSadTear} id={props.id} name={props.id} /></li>
+          <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
+        </FormListStyles>);
+      break;
+      case 7:
+        return(<FormListStyles>
+          <li><FontAwesomeIcon icon={faAngry} id={props.id} name={props.id} /></li>
           <li onClick={() => {undoSelect()}} className="undo"><FontAwesomeIcon icon={faUndo} /></li>
         </FormListStyles>);
       break;

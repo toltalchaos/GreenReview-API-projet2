@@ -11,7 +11,7 @@
 
 - [x] edit review page to use new API
 
-- [] manage icons 
+- [x] manage icons 
 
 
 # deployed at
