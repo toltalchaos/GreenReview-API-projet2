@@ -3,9 +3,6 @@ import React from 'react';
 const AuthContext = React.createContext(null); //initial value = set null
 
 
-
-
-
 const AuthProvider = (props) => {
     //const [user, setUser] = ({role:"admin", uid:null, authenticate:false})
 
